@@ -1,0 +1,19 @@
+{
+	"name": "ds_parameters_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dl_crm",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dataset_params.json",
+				"fileSystem": "config"
+			}
+		},
+		"schema": {}
+	}
+}
