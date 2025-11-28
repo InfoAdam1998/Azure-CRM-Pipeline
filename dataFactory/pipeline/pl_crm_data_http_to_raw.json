@@ -128,7 +128,7 @@
 				}
 			},
 			{
-				"name": "Web1",
+				"name": "Success",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
@@ -145,9 +145,75 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": {
+						"value": "@pipeline().parameters.p_notification_link",
+						"type": "Expression"
+					},
+					"body": {
+						"value": "@pipeline().parameters.p_success_status",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Failed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "For each metadata in params",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": {
+						"value": "@pipeline().parameters.p_notification_link",
+						"type": "Expression"
+					},
+					"body": {
+						"value": "@pipeline().parameters.p_failed_status",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"parameters": {
+			"p_notification_link": {
+				"type": "string",
+				"defaultValue": "https://prod-26.westeurope.logic.azure.com:443/workflows/6237bf8d02bf479ab88ba6306c77e200/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=W5rFIj3QL8UptFLk31xJ42cnPF_hvWnIFwv0X9Jiv5w"
+			},
+			"p_success_status": {
+				"type": "string",
+				"defaultValue": {
+					"pipelineName": "@{pipeline().Pipeline}",
+					"status": "Succeeded",
+					"runId": "@{pipeline().RunId}",
+					"time": "@{utcNow()}"
+				}
+			},
+			"p_failed_status": {
+				"type": "string",
+				"defaultValue": {
+					"pipelineName": "@{pipeline().Pipeline}",
+					"status": "Failed",
+					"runId": "@{pipeline().RunId}",
+					"time": "@{utcNow()}"
+				}
+			}
+		},
 		"annotations": []
 	}
 }
