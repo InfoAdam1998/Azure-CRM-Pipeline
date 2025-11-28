@@ -5,6 +5,15 @@
 		"factoryName": {
 			"value": "adf-crm-dev-euwest"
 		},
+		"ls_dl_crm_accountKey": {
+			"value": ""
+		},
+		"ls_dl_crm_properties_typeProperties_url": {
+			"value": "https://dlcrm001.dfs.core.windows.net/"
+		},
+		"ls_http_crm_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com"
+		},
 		"containerUri": {
 			"value": ""
 		},
