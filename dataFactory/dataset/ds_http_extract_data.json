@@ -10,6 +10,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "source"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
