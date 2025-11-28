@@ -325,11 +325,11 @@
 							"method": "POST",
 							"headers": {},
 							"url": {
-								"value": "@pipeline().parameters.p_notification_link",
+								"value": "https://prod-26.westeurope.logic.azure.com:443/workflows/6237bf8d02bf479ab88ba6306c77e200/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=W5rFIj3QL8UptFLk31xJ42cnPF_hvWnIFwv0X9Jiv5w",
 								"type": "Expression"
 							},
 							"body": {
-								"value": "@pipeline().parameters.p_success_status",
+								"value": "{\n    \"pipelineName\": \"@{pipeline().Pipeline}\", \n    \"status\": \"Succeeded\", \n    \"runId\": \"@{pipeline().RunId}\", \n    \"time\": \"@{utcNow()}\" \n}",
 								"type": "Expression"
 							}
 						}
@@ -357,11 +357,11 @@
 							"method": "POST",
 							"headers": {},
 							"url": {
-								"value": "@pipeline().parameters.p_notification_link",
+								"value": "https://prod-26.westeurope.logic.azure.com:443/workflows/6237bf8d02bf479ab88ba6306c77e200/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=W5rFIj3QL8UptFLk31xJ42cnPF_hvWnIFwv0X9Jiv5w",
 								"type": "Expression"
 							},
 							"body": {
-								"value": "@pipeline().parameters.p_failed_status",
+								"value": "{\n    \"pipelineName\": \"@{pipeline().Pipeline}\", \n    \"status\": \"Failed\", \n    \"runId\": \"@{pipeline().RunId}\", \n    \"time\": \"@{utcNow()}\" \n}",
 								"type": "Expression"
 							}
 						}
@@ -369,30 +369,6 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"p_notification_link": {
-						"type": "string",
-						"defaultValue": "https://prod-26.westeurope.logic.azure.com:443/workflows/6237bf8d02bf479ab88ba6306c77e200/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=W5rFIj3QL8UptFLk31xJ42cnPF_hvWnIFwv0X9Jiv5w"
-					},
-					"p_success_status": {
-						"type": "string",
-						"defaultValue": {
-							"pipelineName": "@{pipeline().Pipeline}",
-							"status": "Succeeded",
-							"runId": "@{pipeline().RunId}",
-							"time": "@{utcNow()}"
-						}
-					},
-					"p_failed_status": {
-						"type": "string",
-						"defaultValue": {
-							"pipelineName": "@{pipeline().Pipeline}",
-							"status": "Failed",
-							"runId": "@{pipeline().RunId}",
-							"time": "@{utcNow()}"
-						}
-					}
 				},
 				"annotations": []
 			},
@@ -408,7 +384,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Started",
+				"runtimeState": "Stopped",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -422,7 +398,7 @@
 				"typeProperties": {
 					"recurrence": {
 						"frequency": "Hour",
-						"interval": 15,
+						"interval": 1,
 						"startTime": "2025-11-28T13:00:00",
 						"timeZone": "GTB Standard Time"
 					}
