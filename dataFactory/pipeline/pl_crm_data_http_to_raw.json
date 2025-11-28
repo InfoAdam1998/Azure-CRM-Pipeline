@@ -198,19 +198,19 @@
 			"p_success_status": {
 				"type": "string",
 				"defaultValue": {
-					"pipelineName": "@{pipeline().PipelineName}",
+					"pipelineName": "@pipeline().PipelineName",
 					"status": "Succeeded",
-					"runId": "@{pipeline().RunId}",
-					"time": "@{utcNow()}"
+					"runId": "@pipeline().RunId",
+					"time": "@utcNow()"
 				}
 			},
 			"p_failed_status": {
 				"type": "string",
 				"defaultValue": {
-					"pipelineName": "@{pipeline().PipelineName}",
+					"pipelineName": "@pipeline().PipelineName",
 					"status": "Failed",
-					"runId": "@{pipeline().RunId}",
-					"time": "@{utcNow()}"
+					"runId": "@pipeline().RunId",
+					"time": "@utcNow()"
 				}
 			}
 		},
