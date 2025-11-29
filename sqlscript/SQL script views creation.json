@@ -1,0 +1,17 @@
+{
+	"name": "SQL script views creation",
+	"properties": {
+		"content": {
+			"query": "-- Create views\nDROP VIEW IF EXISTS dbo.vAccounts;\nDROP VIEW IF EXISTS dbo.vDataDictionary;\nDROP VIEW IF EXISTS dbo.vProducts;\nDROP VIEW IF EXISTS dbo.vSalesPipeline;\nDROP VIEW IF EXISTS dbo.vSalesTeams;\nGO\n\n\nCREATE VIEW dbo.vAccounts AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://dlcrm001.dfs.core.windows.net/transformed/2025-11-28/accounts/*.parquet',\n    FORMAT = 'PARQUET'\n) AS rows;\nGO\n\n\nCREATE VIEW dbo.vDataDictionary AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://dlcrm001.dfs.core.windows.net/transformed/2025-11-28/data_dictionary/*.parquet',\n    FORMAT = 'PARQUET'\n) AS rows;\nGO\n\n\nCREATE VIEW dbo.vProducts AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://dlcrm001.dfs.core.windows.net/transformed/2025-11-28/products/*.parquet',\n    FORMAT = 'PARQUET'\n) AS rows;\nGO\n\n\nCREATE VIEW dbo.vSalesPipeline AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://dlcrm001.dfs.core.windows.net/transformed/2025-11-28/sales_pipeline/*.parquet',\n    FORMAT = 'PARQUET'\n) AS rows;\nGO\n\n\nCREATE VIEW dbo.vSalesTeams AS\nSELECT *\nFROM OPENROWSET(\n    BULK 'https://dlcrm001.dfs.core.windows.net/transformed/2025-11-28/sales_teams/*.parquet',\n    FORMAT = 'PARQUET'\n) AS rows;\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sales",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
