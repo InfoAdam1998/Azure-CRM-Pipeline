@@ -1,0 +1,24 @@
+{
+	"name": "trigger_extraction",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_crm_data_http_to_raw",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2025-11-28T13:00:00",
+				"timeZone": "GTB Standard Time"
+			}
+		}
+	}
+}

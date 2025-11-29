@@ -1,0 +1,27 @@
+[
+  {
+    "p_rel_url": "InfoAdam1998/Azure-CRM-Pipeline/refs/heads/dev/dataset/accounts.csv",
+    "p_folder": "accounts",
+    "p_file": "accounts.csv"
+  },
+  {
+    "p_rel_url": "InfoAdam1998/Azure-CRM-Pipeline/refs/heads/dev/dataset/data_dictionary.csv",
+    "p_folder": "data_dictionary",
+    "p_file": "data_dictionary.csv"
+  },
+  {
+    "p_rel_url": "InfoAdam1998/Azure-CRM-Pipeline/refs/heads/dev/dataset/products.csv",
+    "p_folder": "products",
+    "p_file": "products.csv"
+  },
+  {
+    "p_rel_url": "InfoAdam1998/Azure-CRM-Pipeline/refs/heads/dev/dataset/sales_pipeline.csv",
+    "p_folder": "sales_pipeline",
+    "p_file": "sales_pipeline.csv"
+  },
+  {
+    "p_rel_url": "InfoAdam1998/Azure-CRM-Pipeline/refs/heads/dev/dataset/sales_teams.csv",
+    "p_folder": "sales_teams",
+    "p_file": "sales_teams.csv"
+  }
+]

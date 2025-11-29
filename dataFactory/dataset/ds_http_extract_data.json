@@ -1,0 +1,33 @@
+{
+	"name": "ds_http_extract_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_http_crm",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_rel_url": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "source"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().p_rel_url",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

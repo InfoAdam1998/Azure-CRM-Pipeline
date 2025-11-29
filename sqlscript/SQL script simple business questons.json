@@ -1,0 +1,17 @@
+{
+	"name": "SQL script simple business questons",
+	"properties": {
+		"content": {
+			"query": "\n-- Accounts — business-oriented EDA questions\n-- Q1 — Which sectors generate the highest average revenue?\nSELECT \n    sector,\n    AVG(revenue) AS avg_revenue,\n    office_location\nFROM dbo.vAccounts\nGROUP BY sector, office_location\nORDER BY avg_revenue DESC\n\n-- Q2 — How many employees do companies typically have in each sector?\n\nSELECT \n    COUNT(employees) AS total_employees,\n    parent_company,\n    sector\nFROM dbo.vAccounts\nGROUP BY sector, parent_company\nORDER BY total_employees DESC\n\n-- Q3 — Which office locations have the most accounts?\nSELECT \n    office_location,\n    COUNT(account) AS total_accounts\nFROM dbo.vAccounts\nGROUP BY office_location\nORDER BY total_accounts DESC\n\n-- Products — business-oriented EDA questions\n-- Q1 — What is the average sales price per series?\nSELECT \n    series,\n    AVG(sales_price) AS avg_sales_price\nFROM dbo.vProducts\nGROUP BY series\nORDER BY avg_sales_price DESC\n-- Q2 — Which products are the most expensive?\nSELECT \n    product,\n    MAX(sales_price) AS high_price\nFROM dbo.vProducts\nGROUP BY product\nORDER BY high_price DESC\n\n-- Q3 — How many products exist per series?\nSELECT\n    series,\n    COUNT(product) AS count_products\nFROM dbo.vProducts\nGROUP BY series\nORDER BY count_products DESC\n\n-- Sales Pipeline — meaningful EDA for opportunities\n-- Q1 — Which deal stages have the most opportunities?\nSELECT\n    deal_stage,\n    COUNT(opportunity_id) AS opportunities\nFROM dbo.vSalesPipeline\nGROUP BY deal_stage\nORDER BY opportunities DESC\n\n-- Q2 — What is the average deal value per stage?\nSELECT\n    AVG(close_value) AS avg_deal,\n    deal_stage\nFROM dbo.vSalesPipeline\nGROUP BY deal_stage\nHAVING AVG(close_value) IS NOT NULL\nAND AVG(close_value) > 0\nORDER BY avg_deal DESC\n\n-- Q3 — Which sales agents have the highest total pipeline value?\nSELECT\n    sales_agent,\n    MAX(close_value) AS total_pipeline_value\nFROM dbo.vSalesPipeline\nGROUP BY sales_agent\nORDER BY total_pipeline_value DESC\n\n-- Sales Teams — business-oriented EDA questions\n-- Q1 — How many sales agents report to each manager?\nSELECT \n    manager,\n    COUNT(sales_agent) AS each_sales_agent\nFROM dbo.vSalesTeams\nGROUP BY manager\nORDER BY each_sales_agent DESC\n\n-- Q2 — How many sales agents are assigned per regional office?\nSELECT \n    regional_office,\n    COUNT(sales_agent) AS each_sales_agent\nFROM dbo.vSalesTeams\nGROUP BY regional_office\nORDER BY each_sales_agent DESC\n\n-- Q3 — Which managers handle the most regions (if a manager has agents in multiple offices)?\nSELECT \n    manager,\n    COUNT(DISTINCT(regional_office)) AS distinct_regional_office\nFROM dbo.vSalesTeams\nGROUP BY manager\nORDER BY distinct_regional_office DESC\n\n-- Data Dictionary — metadata EDA\n-- Q1 — What fields contain the word \"date\"?\nSELECT \n    field,\n    description\nFROM dbo.vDataDictionary\nWHERE field LIKE '%date%'",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sales",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

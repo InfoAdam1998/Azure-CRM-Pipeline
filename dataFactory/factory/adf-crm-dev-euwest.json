@@ -1,0 +1,9 @@
+{
+	"name": "adf-crm-dev-euwest",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "49413139-44c6-4bf7-b69e-1d3cd1dea561",
+		"tenantId": "c5daae7f-6073-41e9-989d-c33dd501865e"
+	}
+}
